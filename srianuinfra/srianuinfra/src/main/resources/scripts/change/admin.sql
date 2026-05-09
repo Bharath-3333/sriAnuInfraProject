@@ -1,0 +1,1 @@
+create table admin(id int,email varchar(250),password varchar(50))
