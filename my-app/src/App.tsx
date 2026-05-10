@@ -1,11 +1,10 @@
-import './App.css'
+import Layout from './components/layout/Layout';
+import Home   from './pages/Home';
 
-function App() {
+export default function App() {
   return (
-    <div className="text-center">
-      <h1 className="text-3xl font-bold">Hello World</h1>
-    </div>
-  )
+    <Layout>
+      <Home />
+    </Layout>
+  );
 }
-
-export default App

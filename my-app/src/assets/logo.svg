@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 80" role="img" aria-label="Sri Anu Infrastructure Logo">
+  <defs>
+    <linearGradient id="brandBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1C7BE7" />
+      <stop offset="100%" stop-color="#0F5EAA" />
+    </linearGradient>
+    <linearGradient id="brandGold" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#F5A623" />
+      <stop offset="100%" stop-color="#FFD15C" />
+    </linearGradient>
+  </defs>
+
+  <g transform="translate(8 8)">
+    <circle cx="28" cy="28" r="28" fill="url(#brandBlue)" opacity="0.18" />
+    <path d="M20 44 L20 24 L32 24 L32 44" fill="none" stroke="#1C7BE7" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+    <path d="M26 16 L26 44" fill="none" stroke="#1C7BE7" stroke-width="4" stroke-linecap="round" />
+    <path d="M16 28 L26 16 L36 28" fill="none" stroke="#FFD15C" stroke-width="4" stroke-linecap="round" />
+    <circle cx="26" cy="18" r="5" fill="url(#brandGold)" />
+  </g>
+
+  <text x="80" y="35" font-family="Plus Jakarta Sans, Arial, sans-serif" font-weight="800" font-size="28" fill="#0F2B18">Sri Anu</text>
+  <text x="80" y="57" font-family="Plus Jakarta Sans, Arial, sans-serif" font-weight="600" font-size="12" fill="#2B95F7">Infrastructure</text>
+</svg>
