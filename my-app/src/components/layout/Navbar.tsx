@@ -1,155 +1,282 @@
 import { useState, useEffect } from 'react';
+import { Menu, X } from 'lucide-react';
 import { useScrollSpy } from '../../hooks/useApi';
-import logo from '../../assets/logo.svg';
+import logo from '../../assets/logo.jpeg';
 
 const NAV_ITEMS = [
-  { label: 'About',       href: '#about'      },
-  { label: 'Services',    href: '#services'   },
-  { label: 'Why Solar',   href: '#why'        },
-  { label: 'Projects',    href: '#projects'   },
-  { label: 'Net Metering',href: '#netmetering'},
-  { label: 'Contact',     href: '#contact'    },
+  { label: 'About', href: '#about' },
+  { label: 'Services', href: '#services' },
+  { label: 'Why Solar', href: '#why' },
+  { label: 'Projects', href: '#projects' },
+  { label: 'Net Metering', href: '#netmetering' },
+  { label: 'Contact', href: '#contact' },
 ];
 
-const SECTION_IDS = ['about', 'services', 'why', 'projects', 'netmetering', 'contact'];
+const SECTION_IDS = [
+  'about',
+  'services',
+  'why',
+  'projects',
+  'netmetering',
+  'contact',
+];
 
 export default function Navbar() {
-  const [scrolled,   setScrolled]   = useState(false);
-  const [menuOpen,   setMenuOpen]   = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+
   const activeId = useScrollSpy(SECTION_IDS);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+
+    window.addEventListener('scroll', handleScroll, {
+      passive: true,
+    });
+
+    return () =>
+      window.removeEventListener('scroll', handleScroll);
   }, []);
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? 'hidden' : '';
-    return () => { document.body.style.overflow = ''; };
+
+    return () => {
+      document.body.style.overflow = '';
+    };
   }, [menuOpen]);
 
   const handleNav = (href: string) => {
     setMenuOpen(false);
-    const el = document.getElementById(href.replace('#', ''));
-    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+    const element = document.getElementById(
+      href.replace('#', '')
+    );
+
+    if (element) {
+      element.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      });
+    }
   };
 
   return (
     <>
+      {/* Navbar */}
       <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled
-            ? 'bg-white/95 backdrop-blur-md shadow-navbar py-3'
-            : 'bg-white/90 py-4'
-        }`}
+        className={`
+          fixed top-0 left-0 right-0 z-50
+          border-b border-slate-200/70
+          transition-all duration-300
+          ${
+            scrolled
+              ? 'bg-white/95 backdrop-blur-xl shadow-md py-3'
+              : 'bg-white/90 backdrop-blur-md py-3'
+          }
+        `}
       >
         <div className="max-w-7xl mx-auto px-5 flex items-center justify-between">
 
           {/* Logo */}
-          <a
-            href="#hero"
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="flex items-center gap-3 group"
+          <button
+            onClick={() =>
+              window.scrollTo({
+                top: 0,
+                behavior: 'smooth',
+              })
+            }
+            className="flex items-center gap-2 group"
           >
-            <div className="w-300 h-12 rounded-3xl flex items-center justify-center transition-transform duration-300 group-hover:-translate-y-0.5 bg-white/0">
-            <img
+            <div
+              className="
+                w-11 h-11
+                rounded-xl
+                overflow-hidden
+                bg-white
+                shadow-sm
+                border border-slate-100
+                flex items-center justify-center
+                transition-all duration-300
+                group-hover:shadow-md
+              "
+            >
+              <img
                 src={logo}
                 alt="Sri Anu Infrastructure"
-                className="w-20 h-20 object-contain"
+                className="w-full h-full object-contain p-[2px]"
                 loading="lazy"
                 decoding="async"
               />
             </div>
-            <div className="leading-tight">
-              <div className="font-heading font-800 text-text-primary text-sm tracking-wide">
-                Sri Anu
-              </div>
-              <div className="font-heading font-500 text-text-muted text-2xs tracking-widest uppercase">
-                Infrastructure
-              </div>
-            </div>
-          </a>
 
-          {/* Desktop Nav */}
-          <ul className="hidden lg:flex items-center gap-8">
-            {NAV_ITEMS.map((item) => (
-              <li key={item.href}>
-                <button
-                  onClick={() => handleNav(item.href)}
-                  className={`nav-link underline-animate font-heading font-600 text-sm pb-0.5
-                    ${activeId === item.href.replace('#', '')
-                      ? 'text-brand-green'
-                      : 'text-text-secondary'
-                    }`}
-                >
-                  {item.label}
-                </button>
-              </li>
-            ))}
+            <div className="leading-tight text-left">
+              <h1 className="text-sm font-extrabold tracking-tight text-slate-900">
+                Sri Anu
+              </h1>
+
+              <p className="text-[7px] uppercase tracking-[0.28em] font-bold text-cyan-600">
+                Infrastructure
+              </p>
+            </div>
+          </button>
+
+          {/* Desktop Navigation */}
+          <ul className="hidden lg:flex items-center gap-7">
+            {NAV_ITEMS.map((item) => {
+              const isActive =
+                activeId === item.href.replace('#', '');
+
+              return (
+                <li key={item.href}>
+                  <button
+                    onClick={() => handleNav(item.href)}
+                    className={`
+                      relative text-sm font-semibold
+                      tracking-wide pb-1
+                      transition-all duration-300
+                      ${
+                        isActive
+                          ? 'text-cyan-600'
+                          : 'text-slate-700 hover:text-cyan-600'
+                      }
+                    `}
+                  >
+                    {item.label}
+
+                    <span
+                      className={`
+                        absolute left-0 bottom-0
+                        h-[2px]
+                        rounded-full
+                        bg-cyan-500
+                        transition-all duration-300
+                        ${
+                          isActive
+                            ? 'w-full'
+                            : 'w-0'
+                        }
+                      `}
+                    />
+                  </button>
+                </li>
+              );
+            })}
           </ul>
 
-          {/* CTA + Hamburger */}
-          <div className="flex items-center gap-4">
+          {/* Right Section */}
+          <div className="flex items-center gap-3">
+
+            {/* CTA */}
             <button
               onClick={() => handleNav('#contact')}
-              className="hidden lg:inline-flex btn-primary text-xs py-2.5 px-5"
+              className="
+                hidden lg:flex
+                items-center justify-center
+                px-4 py-2
+                rounded-lg
+                bg-cyan-600 hover:bg-cyan-700
+                text-white text-sm font-semibold
+                shadow-sm hover:shadow-lg
+                transition-all duration-300
+              "
             >
               Get Free Quote
             </button>
 
-            {/* Hamburger */}
+            {/* Mobile Menu Button */}
             <button
-              onClick={() => setMenuOpen((v) => !v)}
-              className="lg:hidden w-10 h-10 flex flex-col justify-center items-center gap-1.5 group"
+              onClick={() => setMenuOpen((prev) => !prev)}
+              className="
+                lg:hidden
+                w-9 h-9
+                rounded-lg
+                border border-slate-200
+                bg-white shadow-sm
+                flex items-center justify-center
+              "
               aria-label="Toggle menu"
             >
-              <span className={`w-5 h-0.5 bg-text-primary transition-all duration-300 origin-center
-                ${menuOpen ? 'rotate-45 translate-y-2' : ''}`} />
-              <span className={`w-5 h-0.5 bg-text-primary transition-all duration-300
-                ${menuOpen ? 'opacity-0 scale-x-0' : ''}`} />
-              <span className={`w-5 h-0.5 bg-text-primary transition-all duration-300 origin-center
-                ${menuOpen ? '-rotate-45 -translate-y-2' : ''}`} />
+              {menuOpen ? (
+                <X className="w-5 h-5 text-slate-800" />
+              ) : (
+                <Menu className="w-5 h-5 text-slate-800" />
+              )}
             </button>
           </div>
         </div>
       </nav>
 
-      {/* Mobile Menu Overlay */}
+      {/* Mobile Menu */}
       <div
-        className={`fixed inset-0 z-40 lg:hidden transition-all duration-300 ${
-          menuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
-        }`}
+        className={`
+          fixed inset-0 z-40 lg:hidden
+          transition-all duration-300
+          ${
+            menuOpen
+              ? 'opacity-100 pointer-events-auto'
+              : 'opacity-0 pointer-events-none'
+          }
+        `}
       >
+        {/* Overlay */}
         <div
-          className="absolute inset-0 bg-black/20 backdrop-blur-sm"
+          className="absolute inset-0 bg-black/30 backdrop-blur-sm"
           onClick={() => setMenuOpen(false)}
         />
+
+        {/* Sidebar */}
         <div
-          className={`absolute top-0 right-0 h-full w-72 bg-white shadow-2xl
-            transform transition-transform duration-300 ${
-            menuOpen ? 'translate-x-0' : 'translate-x-full'
-          }`}
+          className={`
+            absolute top-0 right-0 h-full w-72
+            bg-white shadow-2xl
+            transition-transform duration-300
+            ${
+              menuOpen
+                ? 'translate-x-0'
+                : 'translate-x-full'
+            }
+          `}
         >
-          <div className="p-6 pt-24 flex flex-col gap-2">
-            {NAV_ITEMS.map((item) => (
-              <button
-                key={item.href}
-                onClick={() => handleNav(item.href)}
-                className={`w-full text-left py-3 px-4 rounded-lg font-heading font-600 text-sm
-                  transition-colors duration-200 ${
-                  activeId === item.href.replace('#', '')
-                    ? 'bg-brand-green-light text-brand-green'
-                    : 'text-text-secondary hover:bg-surface-soft'
-                }`}
-              >
-                {item.label}
-              </button>
-            ))}
-            <div className="pt-4 mt-2 border-t border-surface-border">
+          <div className="p-6 pt-24 flex flex-col gap-3">
+            {NAV_ITEMS.map((item) => {
+              const isActive =
+                activeId === item.href.replace('#', '');
+
+              return (
+                <button
+                  key={item.href}
+                  onClick={() => handleNav(item.href)}
+                  className={`
+                    w-full text-left
+                    py-3 px-4
+                    rounded-xl
+                    text-sm font-semibold
+                    transition-all duration-300
+                    ${
+                      isActive
+                        ? 'bg-cyan-50 text-cyan-700'
+                        : 'text-slate-700 hover:bg-slate-100'
+                    }
+                  `}
+                >
+                  {item.label}
+                </button>
+              );
+            })}
+
+            <div className="pt-4 mt-4 border-t border-slate-200">
               <button
                 onClick={() => handleNav('#contact')}
-                className="btn-primary w-full justify-center text-sm"
+                className="
+                  w-full flex items-center justify-center
+                  py-3 rounded-xl
+                  bg-cyan-600 hover:bg-cyan-700
+                  text-white font-semibold
+                  transition-all duration-300
+                "
               >
                 Get Free Quote
               </button>

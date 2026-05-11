@@ -30,12 +30,12 @@ const PROJECTS = [
  * Filenames must match exactly.
  */
 const GALLERY = [
-  { src: '/assets/projects/domestic-1.jpg',    label: 'Domestic Rooftop',          caption: 'Residential solar panel installation, Visakhapatnam', type: 'Rooftop'      },
-  { src: '/assets/projects/domestic-2.jpg',    label: 'Solar Pergola',              caption: 'Solar canopy / pergola installation',                  type: 'Rooftop'      },
-  { src: '/assets/projects/rooftop-1.jpg',     label: 'Hillside Rooftop',           caption: 'On-grid rooftop system with elevated structure',       type: 'Rooftop'      },
-  { src: '/assets/projects/rooftop-2.jpg',     label: 'Industrial Rooftop',         caption: 'Industrial-scale rooftop mounting structure',          type: 'Rooftop'      },
-  { src: '/assets/projects/commercial-1.jpg',  label: 'Ground Mount — Phase 1',     caption: 'Large-scale ground-mount array near transmission lines', type: 'Ground Mount' },
-  { src: '/assets/projects/commercial-2.jpg',  label: 'Ground Mount — Phase 2',     caption: 'Multi-MW open-field solar farm installation',          type: 'Ground Mount' },
+  { src: '/assets/projects/domestic-1.svg',    label: 'Domestic Rooftop',          caption: 'Residential solar panel installation, Visakhapatnam', type: 'Rooftop'      },
+  { src: '/assets/projects/domestic-2.svg',    label: 'Solar Pergola',              caption: 'Solar canopy / pergola installation',                  type: 'Rooftop'      },
+  { src: '/assets/projects/rooftop-1.svg',     label: 'Hillside Rooftop',           caption: 'On-grid rooftop system with elevated structure',       type: 'Rooftop'      },
+  { src: '/assets/projects/rooftop-2.svg',     label: 'Industrial Rooftop',         caption: 'Industrial-scale rooftop mounting structure',          type: 'Rooftop'      },
+  { src: '/assets/projects/commercial-1.svg',  label: 'Ground Mount — Phase 1',     caption: 'Large-scale ground-mount array near transmission lines', type: 'Ground Mount' },
+  { src: '/assets/projects/commercial-2.svg',  label: 'Ground Mount — Phase 2',     caption: 'Multi-MW open-field solar farm installation',          type: 'Ground Mount' },
 ];
 
 const MAX_KW = Math.max(...PROJECTS.map((p) => p.kw));

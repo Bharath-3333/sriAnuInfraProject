@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800">
+  <defs>
+    <linearGradient id="g5" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#92c4ff" />
+      <stop offset="100%" stop-color="#1651a0" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#g5)" />
+  <text x="50%" y="40%" text-anchor="middle" font-family="Arial, sans-serif" font-size="62" fill="#ffffff">Commercial Project 1</text>
+  <text x="50%" y="55%" text-anchor="middle" font-family="Arial, sans-serif" font-size="36" fill="#dbe9ff">Ground mount solar farm</text>
+</svg>

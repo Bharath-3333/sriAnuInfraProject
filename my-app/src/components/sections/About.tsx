@@ -1,6 +1,6 @@
 import type { CSSProperties, SyntheticEvent } from 'react';
 import { useInView } from '../../hooks/useApi';
-import logo from '../../assets/logo.svg';
+import logo from '../../assets/logo.jpeg';
 
 // Sri Anu Infrastructure logo with transparent background for light and dark use.
 const LOGO_SRC = logo;
@@ -190,20 +190,21 @@ export default function About() {
               <b style={{ color: '#F5A623' }}>19+ projects</b> spanning hospitals, colleges,
               cold storages, and large‑scale commercial farms across India.
             </p>
+          </div>
+        </div>
 
-            {/* Values heading */}
-            <div style={styles.valuesHeading}>
-              <span style={styles.valuesLine} />
-              <span style={styles.valuesLabel}>Our Core Values</span>
-              <span style={styles.valuesLine} />
-            </div>
+        {/* ── Core values section ── */}
+        <div style={styles.valuesSection}>
+          <div style={styles.valuesHeading}>
+            <span style={styles.valuesLine} />
+            <span style={styles.valuesLabel}>Our Core Values</span>
+            <span style={styles.valuesLine} />
+          </div>
 
-            {/* Values grid */}
-            <div style={styles.valuesGrid}>
-              {VALUES.map((v, i) => (
-                <ValueCard key={v.title} v={v} delay={i * 60} inView={inView} />
-              ))}
-            </div>
+          <div style={styles.valuesGrid}>
+            {VALUES.map((v, i) => (
+              <ValueCard key={v.title} v={v} delay={i * 60} inView={inView} />
+            ))}
           </div>
         </div>
 
@@ -297,6 +298,7 @@ type AboutStyles = {
   valuesHeading: CSSProperties;
   valuesLine: CSSProperties;
   valuesLabel: CSSProperties;
+  valuesSection: CSSProperties;
   valuesGrid: CSSProperties;
   valueCard: CSSProperties;
   valueIcon: CSSProperties;
@@ -406,8 +408,10 @@ const styles: AboutStyles = {
     marginBottom: 12,
   },
   logo: {
-    width: 200,
+    width: 80,
     height: 'auto',
+    borderRadius:100,
+    backgroundColor:'transparent',
     mixBlendMode: 'screen',   // removes white background in browser
     filter: 'brightness(1.1)',
   },
@@ -507,12 +511,17 @@ const styles: AboutStyles = {
     color: '#2ECC71', whiteSpace: 'nowrap',
   },
 
+  /* Values section wrapper */
+  valuesSection: {
+    marginBottom: 46,
+  },
+
   /* Values grid */
   valuesGrid: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-    gap: 14,
-  },
+  display: 'grid',
+  gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))',
+  gap: 14,
+},
   valueCard: {
     background: '#fff',
     borderRadius: 14,
