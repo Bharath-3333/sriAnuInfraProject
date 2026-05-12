@@ -388,116 +388,210 @@ const styles: AboutStyles = {
     position: 'relative',
   },
   heroCard: {
-    position: 'relative',
-    background: 'linear-gradient(145deg, #1a4731 0%, #0f2d1e 60%, #1a3320 100%)',
-    borderRadius: 28,
-    padding: '44px 36px 36px',
-    color: '#fff',
-    overflow: 'hidden',
-    boxShadow: '0 24px 64px rgba(15,45,30,0.30)',
-  },
-  cardGlow: {
-    position: 'absolute', top: -60, right: -60,
-    width: 220, height: 220, borderRadius: '50%',
-    background: 'radial-gradient(circle, rgba(46,204,113,0.25) 0%, transparent 70%)',
-    pointerEvents: 'none',
-  },
-  logoWrap: {
-    display: 'flex',
-    justifyContent: 'center',
-    marginBottom: 12,
-  },
-  logo: {
-    width: 80,
-    height: 'auto',
-    borderRadius:100,
-    backgroundColor:'transparent',
-    mixBlendMode: 'screen',   // removes white background in browser
-    filter: 'brightness(1.1)',
-  },
-  cardTagline: {
-    textAlign: 'center',
-    fontSize: 12,
-    letterSpacing: '0.14em',
-    color: 'rgba(255,255,255,0.55)',
-    marginBottom: 28,
-  },
-  statsGrid: {
-    display: 'grid',
-    gridTemplateColumns: '1fr 1fr',
-    gap: 12,
-  },
-  statCell: {
-    background: 'rgba(255,255,255,0.08)',
-    backdropFilter: 'blur(8px)',
-    borderRadius: 14,
-    padding: '14px 10px',
-    textAlign: 'center',
-    border: '1px solid rgba(255,255,255,0.10)',
-    display: 'flex',
-    flexDirection: 'column',
-    gap: 4,
-  },
-  statIcon: { fontSize: 18 },
-  statNumber: { fontSize: 22, fontWeight: 800, color: '#F5A623', lineHeight: 1 },
-  statLabel: { fontSize: 10, color: 'rgba(255,255,255,0.6)', letterSpacing: '0.06em', lineHeight: 1.3 },
+  position: 'relative',
+  background: 'linear-gradient(135deg, #123524 0%, #0b2418 55%, #071b12 100%)',
+  borderRadius: 34,
+  padding: '34px 28px',
+  color: '#fff',
+  overflow: 'visible',
+  boxShadow: '0 25px 60px rgba(0,0,0,0.18)',
+  border: '1px solid rgba(255,255,255,0.06)',
+  maxWidth: 720,
+  margin: '0 auto',
+},
 
-  /* Floating badges */
-  badgeClean: {
-    position: 'absolute', bottom: -18, left: -18,
-    background: '#fff',
-    borderRadius: 16,
-    padding: '12px 18px',
-    boxShadow: '0 8px 28px rgba(0,0,0,0.12)',
-    display: 'flex',
-    alignItems: 'center',
-    gap: 10,
-    border: '1px solid rgba(46,204,113,0.2)',
-  },
-  badgeRD: {
-    position: 'absolute', top: -16, right: -16,
-    background: '#fff',
-    borderRadius: 16,
-    padding: '12px 18px',
-    boxShadow: '0 8px 28px rgba(0,0,0,0.12)',
-    display: 'flex',
-    alignItems: 'center',
-    gap: 10,
-    border: '1px solid rgba(245,166,35,0.2)',
-  },
-  badgeEmoji: { fontSize: 22 },
-  badgeTitle: { fontWeight: 700, fontSize: 13, color: '#1a2e1a' },
-  badgeSub: { fontSize: 10, color: '#5a7a6a' },
+cardGlow: {
+  position: 'absolute',
+  top: -80,
+  right: -80,
+  width: 260,
+  height: 260,
+  borderRadius: '50%',
+  background:
+    'radial-gradient(circle, rgba(46,204,113,0.20) 0%, transparent 70%)',
+  pointerEvents: 'none',
+},
+
+logoWrap: {
+  display: 'flex',
+  justifyContent: 'center',
+  marginBottom: 16,
+},
+
+logo: {
+  width: 92,
+  height: 92,
+  objectFit: 'contain',
+  borderRadius: '50%',
+  backgroundColor: 'transparent',
+},
+
+cardTagline: {
+  textAlign: 'center',
+  fontSize: 15,
+  letterSpacing: '0.14em',
+  color: 'rgba(255,255,255,0.72)',
+  marginBottom: 26,
+  marginTop: 8,
+},
+
+statsGrid: {
+  display: 'grid',
+  gridTemplateColumns: '1fr 1fr',
+  gap: 16,
+  marginTop: 10,
+},
+
+statCell: {
+  background: 'rgba(255,255,255,0.06)',
+  border: '1px solid rgba(255,255,255,0.08)',
+  borderRadius: 22,
+  padding: '24px 16px',
+  textAlign: 'center',
+  backdropFilter: 'blur(10px)',
+  minHeight: 120,
+
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'center',
+  alignItems: 'center',
+
+  transition: 'all 0.3s ease',
+},
+
+statIcon: {
+  fontSize: 24,
+  marginBottom: 10,
+},
+
+statNumber: {
+  fontSize: 24,
+  fontWeight: 800,
+  color: '#FDB52A',
+  marginBottom: 6,
+},
+
+statLabel: {
+  fontSize: 14,
+  color: 'rgba(255,255,255,0.74)',
+  lineHeight: 1.5,
+},
+
+badgeClean: {
+  position: 'absolute',
+  bottom: -55,
+  left: -25,
+
+  background: 'rgba(255,255,255,0.92)',
+  backdropFilter: 'blur(18px)',
+
+  borderRadius: 24,
+  padding: '16px 22px',
+
+  display: 'flex',
+  alignItems: 'center',
+  gap: 14,
+
+  border: '1px solid rgba(255,255,255,0.5)',
+
+  boxShadow: '0 20px 45px rgba(0,0,0,0.14)',
+
+  minWidth: 220,
+
+  zIndex: 5,
+},
+
+badgeRD: {
+  position: 'absolute',
+  top: -18,
+  right: -24,
+
+  background: 'rgba(255,255,255,0.88)',
+  backdropFilter: 'blur(18px)',
+
+  borderRadius: 24,
+  padding: '16px 22px',
+
+  display: 'flex',
+  alignItems: 'center',
+  gap: 14,
+
+  border: '1px solid rgba(255,255,255,0.5)',
+
+  boxShadow: '0 20px 45px rgba(0,0,0,0.14)',
+
+  minWidth: 220,
+},
+
+badgeEmoji: {
+  fontSize: 24,
+},
+
+badgeTitle: {
+  fontWeight: 700,
+  fontSize: 14,
+  color: '#173224',
+},
+
+badgeSub: {
+  fontSize: 12,
+  color: '#5f7c6d',
+  marginTop: 2,
+},
 
   /* Text col */
   textCol: {},
 
-  pillRow: {
-    display: 'flex', flexDirection: 'column', gap: 10, marginBottom: 24,
-  },
-  pill: {
-    display: 'flex', alignItems: 'flex-start', gap: 10,
-    background: '#fff',
-    borderRadius: 12,
-    padding: '12px 16px',
-    boxShadow: '0 2px 10px rgba(0,0,0,0.06)',
-    border: '1px solid #e8f4ed',
-  },
-  pillDot: (color: any) => ({
-    display: 'inline-block',
-    width: 8, height: 8,
-    borderRadius: '50%',
-    background: color,
-    marginTop: 5,
-    flexShrink: 0,
-  }),
-  pillText: { fontSize: 13, color: '#3a5a4a', lineHeight: 1.5 },
+ pillRow: {
+  display: 'flex',
+  flexDirection: 'column',
+  gap: 18,
+  marginBottom: 34,
+},
 
-  bodyText: {
-    fontSize: 15, color: '#4a6a5a', lineHeight: 1.8,
-    marginBottom: 32,
-  },
+pill: {
+  display: 'flex',
+  alignItems: 'center',
+  gap: 14,
 
+  background: 'rgba(255,255,255,0.92)',
+  backdropFilter: 'blur(12px)',
+
+  borderRadius: 20,
+  padding: '20px 24px',
+
+  boxShadow: '0 10px 28px rgba(0,0,0,0.06)',
+  border: '1px solid rgba(255,255,255,0.7)',
+
+  transition: 'all 0.3s ease',
+},
+
+pillDot: (color: any) => ({
+  display: 'inline-block',
+  width: 12,
+  height: 12,
+  borderRadius: '50%',
+  background: color,
+  flexShrink: 0,
+
+  boxShadow: `0 0 12px ${color}`,
+}),
+
+pillText: {
+  fontSize: 18,
+  color: '#365345',
+  lineHeight: 1.7,
+  fontWeight: 500,
+},
+
+bodyText: {
+  fontSize: 20,
+  color: '#4c685b',
+  lineHeight: 2,
+  marginBottom: 40,
+  fontWeight: 400,
+  letterSpacing: '0.2px',
+},
   /* Values heading separator */
   valuesHeading: {
     display: 'flex', alignItems: 'center', gap: 12, marginBottom: 20,

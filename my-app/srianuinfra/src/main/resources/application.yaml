@@ -4,22 +4,17 @@ server:
 spring:
   application:
     name: sriAnuApp
-
+  
   datasource:
-    url: jdbc:mysql://localhost:3306/srianu
-    username: root
-    password: 1234
-    driver-class-name: com.mysql.cj.jdbc.Driver
-
+    url: jdbc:h2:mem:testdb
+    username: sa
+    password:
+  
   jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
     hibernate:
-      ddl-auto: update
-    show-sql: true
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.MySQLDialect
-        format_sql: true
-
+      ddl-auto: create-drop
+    defer-datasource-initialization: true
+  
   liquibase:
-    enabled: true
-    change-log: scripts/changelog-mysql.xml
+    enabled: false

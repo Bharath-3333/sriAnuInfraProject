@@ -1,53 +1,19 @@
 ﻿import { useEffect, useRef, useCallback } from 'react';
-import { useCountUp } from '../../hooks/useApi';
 
-const LOGO_SRC = '/assets/logo.png';
+import solarImage from '../../assets/solar5.jpg';
 
-/**
- * Props for the StatCard component.
- */
-interface StatCardProps {
-  target: number;
-  suffix: string;
-  label: string;
-  delay: string;
-  start: boolean;
-}
 
-/**
- * A component that displays animated statistics with a count-up effect.
- */
-function StatCard({ target, suffix, label, delay, start }: StatCardProps) {
-  const count = useCountUp(target, 2000, start);
-  const display = count.toString();
 
-  return (
-    <div
-      className={`animate-fade-up opacity-0-start ${delay} text-center sm:text-left`}
-      style={{ animationFillMode: 'both' }}
-    >
-      <div className="stat-number">
-        {display}{suffix}
-      </div>
-      <div className="stat-label">{label}</div>
-    </div>
-  );
-}
-
-/**
- * The Hero section component with parallax background and animated content.
- */
 export default function Hero() {
   const heroRef = useRef<HTMLDivElement>(null);
 
-  /**
-   * Handles the parallax scroll effect for the background.
-   */
   const handleScroll = useCallback(() => {
     const hero = heroRef.current;
+
     if (!hero) return;
 
     const bg = hero.querySelector<HTMLElement>('.hero-bg-parallax');
+
     if (bg) {
       const y = window.scrollY;
       bg.style.transform = `translateY(${y * 0.3}px)`;
@@ -55,27 +21,31 @@ export default function Hero() {
   }, []);
 
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, {
+      passive: true,
+    });
+
+    return () =>
+      window.removeEventListener('scroll', handleScroll);
   }, [handleScroll]);
 
-  /**
-   * Scrolls smoothly to the contact section.
-   */
   const scrollToContact = useCallback(() => {
-    const contactElement = document.getElementById('contact');
-    if (contactElement) {
-      contactElement.scrollIntoView({ behavior: 'smooth' });
+    const contact = document.getElementById('contact');
+
+    if (contact) {
+      contact.scrollIntoView({
+        behavior: 'smooth',
+      });
     }
   }, []);
 
-  /**
-   * Scrolls smoothly to the projects section.
-   */
   const scrollToProjects = useCallback(() => {
-    const projectsElement = document.getElementById('projects');
-    if (projectsElement) {
-      projectsElement.scrollIntoView({ behavior: 'smooth' });
+    const projects = document.getElementById('projects');
+
+    if (projects) {
+      projects.scrollIntoView({
+        behavior: 'smooth',
+      });
     }
   }, []);
 
@@ -85,65 +55,60 @@ export default function Hero() {
       ref={heroRef}
       className="relative min-h-screen flex items-center overflow-hidden bg-hero-gradient"
     >
-      {/* ── Background layer ── */}
+      {/* BACKGROUND */}
       <div className="hero-bg-parallax absolute inset-0">
+
         <div className="absolute inset-0 bg-dot-pattern opacity-40" />
 
-        {/* Ambient glows */}
-        <div className="absolute -top-32 -right-32 w-[600px] h-[600px] rounded-full
-          bg-brand-green-light opacity-60 blur-3xl" />
-        <div className="absolute -bottom-48 -left-24 w-[500px] h-[500px] rounded-full
-          bg-brand-gold-light opacity-50 blur-3xl" />
+        <div
+          className="absolute -top-32 -right-32 w-[600px] h-[600px]
+          rounded-full bg-brand-green-light opacity-60 blur-3xl"
+        />
 
-        {/* Animated sun ring — desktop only */}
-        <div className="absolute top-20 right-[8%] hidden lg:block">
-          <div className="relative w-72 h-72 opacity-20">
-            <div className="absolute inset-0 rounded-full border-4 border-brand-green animate-spin-slow" />
-            <div
-              className="absolute inset-6 rounded-full border-2 border-brand-gold animate-spin-slow"
-              style={{ animationDirection: 'reverse', animationDuration: '18s' }}
-            />
-            <div className="absolute inset-0 flex items-center justify-center text-8xl animate-float">
-              ☀️
-            </div>
-          </div>
-        </div>
+        <div
+          className="absolute -bottom-48 -left-24 w-[500px] h-[500px]
+          rounded-full bg-brand-gold-light opacity-50 blur-3xl"
+        />
+
       </div>
 
-      {/* ── Main content ── */}
+      {/* CONTENT */}
       <div className="relative z-10 max-w-7xl mx-auto px-5 w-full pt-28 pb-20">
+
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
-          {/* LEFT — Text */}
+          {/* LEFT */}
           <div className="max-w-2xl">
 
-            {/* Location tag */}
             <div
-              className="animate-fade-up opacity-0-start animate-delay-100 inline-flex
-                items-center gap-3 bg-white/80 backdrop-blur-sm border border-brand-green/20
-                px-4 py-2 rounded-full mb-7 shadow-brand-sm"
+              className="animate-fade-up opacity-0-start animate-delay-100
+              inline-flex items-center gap-3 bg-white/80 backdrop-blur-sm
+              border border-brand-green/20 px-4 py-2 rounded-full mb-7"
               style={{ animationFillMode: 'both' }}
             >
-              <span className="w-2 h-2 rounded-full bg-brand-green animate-pulse-soft" />
-              <span className="font-heading font-600 text-brand-green text-xs tracking-widest uppercase">
+              <span className="w-2 h-2 rounded-full bg-brand-green" />
+
+              <span className="text-brand-green text-xs tracking-widest uppercase font-semibold">
                 Visakhapatnam · EPC Power Solutions
               </span>
             </div>
 
-            {/* Headline */}
+            {/* HEADING */}
             <h1
-              className="animate-fade-up opacity-0-start animate-delay-200 font-display
-                text-5xl sm:text-6xl lg:text-7xl font-700 text-text-primary leading-[1.05] mb-5"
+              className="animate-fade-up opacity-0-start animate-delay-200
+              text-5xl sm:text-6xl lg:text-7xl font-extrabold
+              leading-[1.1] mb-6 text-text-primary"
               style={{ animationFillMode: 'both' }}
             >
               Powering India With{' '}
+
               <span className="text-brand-green relative inline-block">
                 Clean Solar
+
                 <svg
                   className="absolute -bottom-2 left-0 w-full"
                   viewBox="0 0 300 12"
                   xmlns="http://www.w3.org/2000/svg"
-                  preserveAspectRatio="none"
                 >
                   <path
                     d="M0 8 Q75 2 150 8 Q225 14 300 8"
@@ -154,174 +119,221 @@ export default function Hero() {
                   />
                 </svg>
               </span>
+
               {' '}Energy
             </h1>
 
-            {/* Subtitle */}
+            {/* SUBTITLE */}
             <p
-              className="animate-fade-up opacity-0-start animate-delay-300 section-body
-                text-lg mb-8"
+              className="animate-fade-up opacity-0-start animate-delay-300
+              text-lg text-text-muted mb-10 leading-relaxed max-w-xl"
               style={{ animationFillMode: 'both' }}
             >
-              A team of passionate engineers delivering Turn-key EPC solar solutions —
-              from residential rooftops to multi-megawatt commercial installations.
-              Quality, commitment, and innovation at every step.
+              A team of passionate engineers delivering Turn-key EPC
+              solar solutions from residential rooftops to
+              multi-megawatt commercial installations.
             </p>
 
-            {/* CTAs */}
+            {/* BUTTONS */}
             <div
               className="animate-fade-up opacity-0-start animate-delay-400
-                flex flex-wrap gap-4 mb-14"
+              flex flex-wrap gap-5 mb-16"
               style={{ animationFillMode: 'both' }}
             >
-              <button onClick={scrollToContact} className="btn-primary px-7 py-3.5">
+              <button
+                onClick={scrollToContact}
+                className="px-7 py-3.5 rounded-xl bg-brand-green
+                text-white font-semibold shadow-md
+                hover:shadow-xl hover:scale-105 transition-all"
+              >
                 Get Free Quote ✦
               </button>
-              <button onClick={scrollToProjects} className="btn-outline px-7 py-3.5">
+
+              <button
+                onClick={scrollToProjects}
+                className="px-7 py-3.5 rounded-xl border border-gray-300
+                font-semibold hover:bg-gray-100 transition-all"
+              >
                 View Projects →
               </button>
             </div>
 
-            {/* Stats row */}
-            <div
-              className="animate-fade-up opacity-0-start animate-delay-500
-                pt-8 border-t border-brand-green/15"
-              style={{ animationFillMode: 'both' }}
-            >
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-10">
-                <StatCard target={19} suffix="+"   label="Projects Delivered" delay="animate-delay-500" start={true} />
-                <StatCard target={16} suffix=" MW"  label="Total Capacity"    delay="animate-delay-500" start={true} />
-                <StatCard target={22} suffix="M+"   label="kWh / Year"        delay="animate-delay-500" start={true} />
-                <StatCard target={25} suffix=" yr"  label="PPA Duration"      delay="animate-delay-500" start={true} />
-              </div>
-            </div>
-          </div>
+            {/* STATS */}
+<div
+  className="animate-fade-up opacity-0-start animate-delay-500 mt-14"
+  style={{ animationFillMode: 'both' }}
+>
+  <div className="grid grid-cols-2 lg:grid-cols-4 gap-5">
 
-          {/* RIGHT — Logo card (desktop) */}
+    {[
+      ['19+', 'Projects Completed'],
+      ['16 MW', 'Installed Capacity'],
+      ['22M+', 'kWh / Year'],
+      ['25 yr', 'PPA Duration'],
+    ].map(([value, label]) => (
+      <div
+        key={label}
+        className="group rounded-3xl px-6 py-7
+        transition-all duration-300 hover:-translate-y-1"
+        style={{
+          background: 'rgba(255,255,255,0.72)',
+          border: '1px solid rgba(0,0,0,0.05)',
+          backdropFilter: 'blur(14px)',
+          boxShadow: '0 10px 30px rgba(0,0,0,0.05)',
+        }}
+      >
+        <h3
+          className="text-4xl font-extrabold
+          text-brand-green mb-2"
+        >
+          {value}
+        </h3>
+
+        <p
+          className="text-sm text-text-muted
+          leading-relaxed"
+        >
+          {label}
+        </p>
+
+        <div
+          className="mt-5 h-[3px] w-12 rounded-full
+          bg-gradient-to-r from-brand-green to-brand-gold
+          transition-all duration-300 group-hover:w-20"
+        />
+      </div>
+    ))}
+
+  </div>
+</div>
+</div> 
+        {/* RIGHT — Premium Solar Banner */}
+<div
+  className="hidden lg:flex items-center justify-center
+  animate-fade-up opacity-0-start animate-delay-300"
+  style={{ animationFillMode: 'both' }}
+>
+  <div
+    className="relative w-[540px] h-[620px]
+    rounded-[32px] overflow-hidden
+    shadow-[0_25px_60px_rgba(0,0,0,0.28)]"
+  >
+
+    {/* Background Image */}
+    <img
+      src={solarImage}
+      alt="Solar Plant"
+      className="absolute inset-0 w-full h-full object-cover"
+    />
+
+    {/* Dark Overlay */}
+    <div
+      className="absolute inset-0"
+      style={{
+        background:
+          'linear-gradient(to bottom, rgba(0,0,0,0.25), rgba(0,0,0,0.82))',
+      }}
+    />
+
+    {/* Glow */}
+    <div
+      className="absolute -top-24 left-1/2 -translate-x-1/2
+      w-[320px] h-[320px] rounded-full blur-3xl"
+      style={{
+        background: 'rgba(255,180,0,0.16)',
+      }}
+    />
+
+    {/* Content */}
+    <div className="relative z-10 h-full flex flex-col justify-between p-8">
+
+      {/* TOP */}
+      <div>
+
+        <div
+          className="inline-flex items-center gap-2
+          bg-white/10 backdrop-blur-md
+          border border-white/10
+          rounded-full px-4 py-2 mb-6"
+        >
+          <span className="w-2 h-2 rounded-full bg-yellow-400" />
+
+          <span className="text-xs tracking-[0.2em] uppercase text-white/80">
+            Clean & Renewable Energy
+          </span>
+        </div>
+
+        <h2
+          className="text-4xl xl:text-5xl font-extrabold
+          leading-tight text-white"
+        >
+          POWERING A
+
+          <span className="block text-yellow-400">
+            SUSTAINABLE FUTURE
+          </span>
+        </h2>
+
+        <p className="mt-5 text-white/75 leading-relaxed max-w-md">
+          Sri Anu Infrastructure delivers reliable EPC solar
+          solutions with innovation, engineering excellence
+          and long-term sustainability.
+        </p>
+
+      </div>
+
+      {/* FEATURE CARDS */}
+      <div className="grid grid-cols-2 gap-4">
+
+        {[
+          ['⚡', 'Clean Energy'],
+          ['🛠️', 'Turn-key EPC'],
+          ['🛡️', 'Quality & Reliability'],
+          ['👨‍💼', 'Expert Team'],
+        ].map(([icon, title]) => (
           <div
-            className="hidden lg:flex flex-col items-center justify-center
-              animate-fade-up opacity-0-start animate-delay-300"
-            style={{ animationFillMode: 'both' }}
+            key={title}
+            className="rounded-2xl p-4
+            bg-white/10 backdrop-blur-md
+            border border-white/10
+            hover:scale-[1.03]
+            transition-all duration-300"
           >
-            {/* Dark card identical in style to About's heroCard */}
-            <div
-              className="relative rounded-3xl overflow-hidden shadow-brand-lg w-full max-w-sm"
-              style={{
-                background: 'linear-gradient(145deg, #1a4731 0%, #0f2d1e 60%, #1a3320 100%)',
-                padding: '44px 36px 36px',
-              }}
-            >
-              {/* Radial glow inside card */}
-              <div
-                className="absolute -top-16 -right-16 w-56 h-56 rounded-full pointer-events-none"
-                style={{
-                  background: 'radial-gradient(circle, rgba(46,204,113,0.25) 0%, transparent 70%)',
-                }}
-              />
-              {/* Second glow bottom-left */}
-              <div
-                className="absolute -bottom-12 -left-12 w-44 h-44 rounded-full pointer-events-none"
-                style={{
-                  background: 'radial-gradient(circle, rgba(245,166,35,0.15) 0%, transparent 70%)',
-                }}
-              />
-
-              {/* Logo — mix-blend-mode:screen strips white bg */}
-              <div className="relative z-10 flex justify-center mb-3">
-                <img
-                  src={LOGO_SRC}
-                  alt="Sri Anu Infrastructure"
-                  className="w-52 h-auto"
-                  style={{ mixBlendMode: 'screen', filter: 'brightness(1.15)' }}
-                  onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
-                />
-              </div>
-
-              {/* Tagline under logo */}
-              <p
-                className="relative z-10 text-center font-heading font-500 tracking-widest uppercase mb-8"
-                style={{ fontSize: 10, color: 'rgba(255,255,255,0.50)', letterSpacing: '0.16em' }}
-              >
-                Engineering · Procurement · Construction
-              </p>
-
-              {/* 2×2 stat cells — same as About */}
-              <div className="relative z-10 grid grid-cols-2 gap-3">
-                {[
-                  { icon: '⚡', num: '19+',   lbl: 'Projects Completed' },
-                  { icon: '☀️', num: '16 MW', lbl: 'Capacity Installed'  },
-                  { icon: '📅', num: '5+',    lbl: 'Years of Excellence' },
-                  { icon: '🏗️', num: '100%',  lbl: 'EPC Turnkey'         },
-                ].map((s) => (
-                  <div
-                    key={s.lbl}
-                    className="flex flex-col items-center text-center rounded-xl py-3 px-2"
-                    style={{
-                      background: 'rgba(255,255,255,0.08)',
-                      border: '1px solid rgba(255,255,255,0.10)',
-                      backdropFilter: 'blur(8px)',
-                    }}
-                  >
-                    <span className="text-lg mb-1">{s.icon}</span>
-                    <span
-                      className="font-display font-800 leading-none mb-1"
-                      style={{ fontSize: 20, color: '#F5A623' }}
-                    >
-                      {s.num}
-                    </span>
-                    <span
-                      className="font-heading font-500 leading-snug"
-                      style={{ fontSize: 9, color: 'rgba(255,255,255,0.55)', letterSpacing: '0.05em' }}
-                    >
-                      {s.lbl}
-                    </span>
-                  </div>
-                ))}
-              </div>
+            <div className="text-2xl mb-3">
+              {icon}
             </div>
 
-            {/* Floating badge — Clean Energy (mirrors About) */}
-            <div
-              className="absolute flex items-center gap-3 bg-white rounded-2xl shadow-card-hover px-4 py-3"
-              style={{
-                bottom: '12%', left: '4%',
-                border: '1px solid rgba(46,204,113,0.20)',
-              }}
-            >
-              <span className="text-2xl">🌿</span>
-              <div>
-                <div className="font-heading font-700 text-text-primary text-sm">100% Clean</div>
-                <div className="font-heading font-500 text-text-muted text-xs">Renewable Energy</div>
-              </div>
-            </div>
+            <h3 className="text-white font-semibold text-sm">
+              {title}
+            </h3>
 
-            {/* Floating badge — R&D */}
-            <div
-              className="absolute flex items-center gap-3 bg-white rounded-2xl shadow-card-hover px-4 py-3"
-              style={{
-                top: '10%', right: '2%',
-                border: '1px solid rgba(245,166,35,0.20)',
-              }}
-            >
-              <span className="text-2xl">⚗️</span>
-              <div>
-                <div className="font-heading font-700 text-text-primary text-sm">R&D Driven</div>
-                <div className="font-heading font-500 text-text-muted text-xs">Innovation at Core</div>
-              </div>
-            </div>
+            <p className="text-white/65 text-xs mt-1">
+              Sustainable solar solutions.
+            </p>
           </div>
+        ))}
+
+      </div>
+
+    </div>
+  </div>
+</div>
 
         </div>
       </div>
 
-      {/* ── Scroll indicator ── */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col
-        items-center gap-2 animate-bounce">
-        <span className="font-heading font-600 text-text-muted text-2xs tracking-widest uppercase">
-          Scroll
-        </span>
-        <div className="w-px h-10 bg-gradient-to-b from-brand-green to-transparent" />
-      </div>
-    </section>
-  );
+{/* ── Scroll indicator ── */}
+<div
+  className="absolute bottom-8 left-1/2 -translate-x-1/2
+  flex flex-col items-center gap-2 animate-bounce"
+>
+  <span className="font-heading font-600 text-text-muted text-2xs tracking-widest uppercase">
+    Scroll
+  </span>
+
+  <div className="w-px h-10 bg-gradient-to-b from-brand-green to-transparent" />
+</div>
+
+</section>
+);
 }

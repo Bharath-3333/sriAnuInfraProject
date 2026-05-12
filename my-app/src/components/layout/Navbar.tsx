@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { useScrollSpy } from '../../hooks/useApi';
-import logo from '../../assets/logo.jpeg';
+import logo from '../../assets/project logo.jpeg';
 
 const NAV_ITEMS = [
   { label: 'About', href: '#about' },
@@ -81,47 +81,37 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto px-5 flex items-center justify-between">
 
           {/* Logo */}
-          <button
-            onClick={() =>
-              window.scrollTo({
-                top: 0,
-                behavior: 'smooth',
-              })
-            }
-            className="flex items-center gap-2 group"
-          >
-            <div
-              className="
-                w-11 h-11
-                rounded-xl
-                overflow-hidden
-                bg-white
-                shadow-sm
-                border border-slate-100
-                flex items-center justify-center
-                transition-all duration-300
-                group-hover:shadow-md
-              "
-            >
-              <img
-                src={logo}
-                alt="Sri Anu Infrastructure"
-                className="w-full h-full object-contain p-[2px]"
-                loading="lazy"
-                decoding="async"
-              />
-            </div>
+<button
+  onClick={() =>
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    })
+  }
+  className="flex items-center gap-4"
+>
+  {/* LOGO IMAGE (BIGGER) */}
+  <img
+    src={logo}
+    alt="Sri Anu Infrastructure"
+    className="w-14 h-14 object-contain"
+  />
 
-            <div className="leading-tight text-left">
-              <h1 className="text-sm font-extrabold tracking-tight text-slate-900">
-                Sri Anu
-              </h1>
+  {/* TEXT */}
+  <div className="flex flex-col leading-tight text-left">
+    
+    {/* SRI ANU (BIGGER + LEFT) */}
+    <span className="text-xl font-bold text-slate-900 leading-none">
+      Sri Anu
+    </span>
 
-              <p className="text-[7px] uppercase tracking-[0.28em] font-bold text-cyan-600">
-                Infrastructure
-              </p>
-            </div>
-          </button>
+    {/* INFRASTRUCTURE (ALIGNED WIDTH) */}
+    <span className="text-[11px] font-semibold tracking-[0.28em] text-brand-green/90 mt-[2px]">
+  INFRASTRUCTURE
+</span>
+
+  </div>
+</button>
 
           {/* Desktop Navigation */}
           <ul className="hidden lg:flex items-center gap-7">

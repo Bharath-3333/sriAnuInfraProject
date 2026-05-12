@@ -1,3 +1,5 @@
+import * as FaIcons from "react-icons/fa";
+
 const SERVICES = [
   'Rooftop Solar Systems',
   'Ground Mount Solar',
@@ -75,18 +77,24 @@ export default function Footer() {
               Rooftop to large-scale — we power the future, cleanly.
             </p>
             <div className="flex gap-3">
-              {['in', 'tw', 'fb', 'yt'].map((s) => (
-                <a
-                  key={s}
-                  href="#"
-                  className="w-8 h-8 rounded-full border border-white/15 flex items-center
-                    justify-center text-gray-400 hover:border-brand-green hover:text-brand-green
-                    transition-all duration-200 text-xs font-heading font-700 uppercase"
-                >
-                  {s}
-                </a>
-              ))}
-            </div>
+
+  <a href="#">
+    <FaIcons.FaLinkedinIn size={14} />
+  </a>
+
+  <a href="#">
+    <FaIcons.FaInstagram size={14} />
+  </a>
+
+  <a href="#">
+    <FaIcons.FaFacebookF size={14} />
+  </a>
+
+  <a href="#">
+    <FaIcons.FaYoutube size={14} />
+  </a>
+
+</div>
           </div>
 
           {/* Quick Links */}
