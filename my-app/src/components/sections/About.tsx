@@ -1,6 +1,6 @@
 import type { CSSProperties, SyntheticEvent } from 'react';
 import { useInView } from '../../hooks/useApi';
-import logo from '../../assets/logo.jpeg';
+import logo from '../../assets/project logo.jpeg';
 
 // Sri Anu Infrastructure logo with transparent background for light and dark use.
 const LOGO_SRC = logo;
@@ -116,7 +116,7 @@ export default function About() {
               <div style={styles.logoWrap}>
                 <img
                   src={LOGO_SRC}
-                  alt="Sri Anu Infrastructure"
+                  alt="Project logo"
                   style={styles.logo}
                   onError={(e: SyntheticEvent<HTMLImageElement>) => {
                     e.currentTarget.style.display = 'none';
@@ -314,14 +314,14 @@ type AboutStyles = {
 const styles: AboutStyles = {
   section: {
     position: 'relative',
-    background: 'linear-gradient(160deg, #f8fffe 0%, #f0faf4 50%, #fffef5 100%)',
-    padding: '100px 20px 80px',
+    background: 'linear-gradient(160deg, #f8fffe 0%, #f6faf4 48%, #fffef5 100%)',
+    padding: '80px 20px 72px',
     overflow: 'hidden',
     fontFamily: "'Segoe UI', 'Helvetica Neue', Arial, sans-serif",
   },
   blobTopRight: {
-    position: 'absolute', top: -120, right: -120,
-    width: 420, height: 420, borderRadius: '50%',
+    position: 'absolute', top: -100, right: -100,
+    width: 360, height: 360, borderRadius: '50%',
     background: 'radial-gradient(circle, rgba(46,204,113,0.12) 0%, transparent 70%)',
     pointerEvents: 'none',
   },
@@ -341,25 +341,28 @@ const styles: AboutStyles = {
   /* Header */
   header: {
     textAlign: 'center',
-    marginBottom: 72,
+    marginBottom: 64,
+    maxWidth: 760,
+    marginLeft: 'auto',
+    marginRight: 'auto',
   },
   eyebrow: {
     display: 'inline-block',
-    fontSize: 11,
+    fontSize: 12,
     fontWeight: 700,
     letterSpacing: '0.18em',
     color: '#2ECC71',
     background: 'rgba(46,204,113,0.10)',
-    borderRadius: 30,
-    padding: '5px 16px',
-    marginBottom: 18,
+    borderRadius: 28,
+    padding: '6px 16px',
+    marginBottom: 16,
   },
   sectionTitle: {
-    fontSize: 'clamp(28px, 4vw, 46px)',
+    fontSize: 'clamp(26px, 3.6vw, 40px)',
     fontWeight: 800,
     color: '#1a2e1a',
     lineHeight: 1.2,
-    margin: '0 0 18px',
+    margin: '0 0 16px',
   },
   titleAccent: {
     background: 'linear-gradient(90deg, #2ECC71, #27ae60)',
@@ -367,20 +370,20 @@ const styles: AboutStyles = {
     WebkitTextFillColor: 'transparent',
   },
   sectionSubtitle: {
-    fontSize: 16,
+    fontSize: 15,
     color: '#5a7a6a',
-    maxWidth: 580,
+    maxWidth: 620,
     margin: '0 auto',
-    lineHeight: 1.7,
+    lineHeight: 1.75,
   },
 
   /* Main grid */
   mainGrid: {
     display: 'grid',
     gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-    gap: 56,
+    gap: 48,
     alignItems: 'start',
-    marginBottom: 60,
+    marginBottom: 54,
   },
 
   /* Visual col */
@@ -388,29 +391,29 @@ const styles: AboutStyles = {
     position: 'relative',
   },
   heroCard: {
-  position: 'relative',
-  background: 'linear-gradient(135deg, #123524 0%, #0b2418 55%, #071b12 100%)',
-  borderRadius: 34,
-  padding: '34px 28px',
-  color: '#fff',
-  overflow: 'visible',
-  boxShadow: '0 25px 60px rgba(0,0,0,0.18)',
-  border: '1px solid rgba(255,255,255,0.06)',
-  maxWidth: 720,
-  margin: '0 auto',
-},
+    position: 'relative',
+    background: 'linear-gradient(135deg, #143925 0%, #0c2416 55%, #071b12 100%)',
+    borderRadius: 28,
+    padding: '30px 24px',
+    color: '#fff',
+    overflow: 'visible',
+    boxShadow: '0 18px 46px rgba(0,0,0,0.16)',
+    border: '1px solid rgba(255,255,255,0.08)',
+    maxWidth: 640,
+    margin: '0 auto',
+  },
 
-cardGlow: {
-  position: 'absolute',
-  top: -80,
-  right: -80,
-  width: 260,
-  height: 260,
-  borderRadius: '50%',
-  background:
-    'radial-gradient(circle, rgba(46,204,113,0.20) 0%, transparent 70%)',
-  pointerEvents: 'none',
-},
+  cardGlow: {
+    position: 'absolute',
+    top: -60,
+    right: -60,
+    width: 180,
+    height: 180,
+    borderRadius: '50%',
+    background:
+      'radial-gradient(circle, rgba(46,204,113,0.18) 0%, transparent 70%)',
+    pointerEvents: 'none',
+  },
 
 logoWrap: {
   display: 'flex',
@@ -419,21 +422,25 @@ logoWrap: {
 },
 
 logo: {
-  width: 92,
-  height: 92,
+  width: 80,
+  height: 80,
   objectFit: 'contain',
-  borderRadius: '50%',
+  borderRadius: "50%",
+  alignItems:"center",
   backgroundColor: 'transparent',
+  padding: 12,
+  boxShadow: '0 16px 36px rgba(0,0,0,0.14)',
 },
 
 cardTagline: {
   textAlign: 'center',
-  fontSize: 15,
-  letterSpacing: '0.14em',
-  color: 'rgba(255,255,255,0.72)',
-  marginBottom: 26,
-  marginTop: 8,
+  fontSize: 14,
+  letterSpacing: '0.12em',
+  color: 'rgba(255,255,255,0.78)',
+  marginBottom: 24,
+  marginTop: 10,
 },
+
 
 statsGrid: {
   display: 'grid',
@@ -465,14 +472,14 @@ statIcon: {
 },
 
 statNumber: {
-  fontSize: 24,
+  fontSize: 20,
   fontWeight: 800,
   color: '#FDB52A',
   marginBottom: 6,
 },
 
 statLabel: {
-  fontSize: 14,
+  fontSize: 13,
   color: 'rgba(255,255,255,0.74)',
   lineHeight: 1.5,
 },
@@ -578,14 +585,14 @@ pillDot: (color: any) => ({
 }),
 
 pillText: {
-  fontSize: 18,
+  fontSize: 16,
   color: '#365345',
   lineHeight: 1.7,
   fontWeight: 500,
 },
 
 bodyText: {
-  fontSize: 20,
+  fontSize: 16,
   color: '#4c685b',
   lineHeight: 2,
   marginBottom: 40,

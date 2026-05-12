@@ -78,23 +78,23 @@ export default function Footer() {
             </p>
             <div className="flex gap-3">
 
-  <a href="#">
-    <FaIcons.FaLinkedinIn size={14} />
-  </a>
+              <a href="https://www.linkedin.com/company/sri-anu-infrastructure" target="_blank" rel="noopener noreferrer">
+                <FaIcons.FaLinkedinIn size={14} />
+              </a>
 
-  <a href="#">
-    <FaIcons.FaInstagram size={14} />
-  </a>
+              <a href="https://www.instagram.com/chittibabugarbhapu?igsh=MW0wcDdtOXhub2s5bA==" target="_blank" rel="noopener noreferrer">
+                <FaIcons.FaInstagram size={14} />
+              </a>
 
-  <a href="#">
-    <FaIcons.FaFacebookF size={14} />
-  </a>
+              <a href="https://www.facebook.com/share/r/17tfbyTVft/" target="_blank" rel="noopener noreferrer">
+                <FaIcons.FaFacebookF size={14} />
+              </a>
 
-  <a href="#">
-    <FaIcons.FaYoutube size={14} />
-  </a>
+              <a href="https://youtube.com/@solarsystemworkcom?si=_lClvmW9Ql28dfPM" target="_blank" rel="noopener noreferrer">
+                <FaIcons.FaYoutube size={14} />
+              </a>
 
-</div>
+            </div>
           </div>
 
           {/* Quick Links */}
@@ -159,7 +159,7 @@ export default function Footer() {
                   📞
                 </div>
                 <div>
-                  <p className="text-white text-sm font-body">+91 98765 43210</p>
+                  <p className="text-white text-sm font-body">+91 8309227037</p>
                   <p className="text-gray-500 text-xs">Mon – Sat, 9AM – 6PM</p>
                 </div>
               </div>
@@ -169,9 +169,9 @@ export default function Footer() {
                   ✉️
                 </div>
                 <div>
-                  <a href="mailto:info@srianui.com"
+                  <a href="mailto:srianuinfra@gmail.com"
                     className="text-brand-green-mid text-sm hover:text-white transition-colors">
-                    info@srianui.com
+                    srianuinfra@gmail.com
                   </a>
                 </div>
               </div>
